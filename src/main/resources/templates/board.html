@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${board.title}"></title>
+</head>
+<body>
+<!-- 게시판 제목 ~ -->
+<p th:text="${board.title}"></p>
+<!-- ~ 게시판 제목 -->
+
+
+
+<!-- 카테고리 ~ -->
+    <!-- 카테고리 목록 펼치기 버튼 !!! -->
+<!--카테고리 목록-->
+<div th:each="category : ${categories}">
+<ol th:text="${category.name}"></ol>
+</div>
+
+<!--카테고리 생성-->
+<form th:action="@{/category/new}" th:object="${categoryForm}" method="post">
+    새 카테고리 : <input type="text" th:field="*{categoryName}"/>
+    <!-- !!! form 객체에 setter 있어야 하네~~~ -->
+    <input type="hidden" th:field="*{upperBoardId}"/>
+    <button type="submit">제출</button>
+</form>
+<!-- ~ 카테고리 -->
+
+
+
+<!-- scrap 타입과 new 스크랩 버튼(+) ~ -->
+<form th:action="@{/{boardId}/scrap/new (boardId=${board.id})}" method="get">
+    <button type="submit">+</button>
+</form>
+<!-- ~ scrap 타입과 new 스크랩 버튼(+) -->
+
+
+<!-- scrap 목록들 ~ -->
+<div th:each="scrap: ${scraps}">
+    -----
+    <br>
+    <a href="#" th:href="@{/{boardId}/scrap/{scrapId} (boardId=${board.id}, scrapId=${scrap.id})}" th:text="*{scrap.title}"></a>
+    <p th:text="*{scrap.summary}"></p>
+    -----
+</div>
+<!-- ~ scrap 목록들 -->
+
+
+
+
+</body>
+<script>
+</script>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="#" th:href="@{/board/{boardId} (boardId=${boardId})}" role="button">개인 게시판</a>
+
+<p th:text="${scrap.title}"></p>
+<p th:text="${scrap.text}"></p>
+</body>
+</html>

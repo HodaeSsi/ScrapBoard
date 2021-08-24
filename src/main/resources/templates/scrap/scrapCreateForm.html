@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/scrap/new}" th:object="${scrapCreateForm}" method="post">
+    <input type="hidden" th:field="*{affiliatedBoardId}"/>
+
+    <select th:field="*{affiliatedCategoryId}">
+        <option value="">카테고리</option>
+        <option th:each="category : ${categoriesInBoard}"
+                th:value="${category.getId()}"
+                th:text="${category.getName()}"/>
+    </select>
+    <br>
+
+<!--    태그 -->
+<!--    -->
+<!--    애초에 보드에서 새 스크랩만들기 할때, 스크랩 유형을 지정하게 만들자-->
+    <select th:field="*{scrapType}">
+        <option value="">타입</option>
+        <option th:text="TEXT" th:value="TEXT"/>
+        <option th:text="LINK" th:value="LINK"/>
+        <option th:text="IMAGE" th:value="IMAGE"/>
+        <option th:text="VIDEO" th:value="VIDEO"/>
+        <option th:text="OTHERFILE" th:value="OTHERFILE"/>
+    </select>
+    <br>
+
+    제목 : <input type="text" th:field="*{title}"/>
+    <br>
+    본문 : <input type="text" th:field="*{text}"/>
+    <br>
+    요약 : <input type="text" th:field="*{summary}">
+    <br>
+
+<!--    유형별로 폼페이지 다르게 보여주자 !!!-->
+<!--    <input type="text" th:field="*{link}"/>-->
+<!--    <br>-->
+
+<!-- 파일 업로드-->
+<!--    -->
+
+
+    <br>
+    <input type="submit"/>
+</form>
+<!--<form th:action="@{/{boardId}/scrap/new (boardId=${})}">-->
+<!--취소키!!!-->
+</form>
+</body>
+</html>
