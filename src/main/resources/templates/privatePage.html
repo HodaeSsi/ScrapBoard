@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ScrapBoard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!--로그아웃-->
+    <div th:if="${not #strings.isEmpty(userName)}">
+        Logged in as: <span th:text="${userName}" id="user"></span>
+        <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+    </div>
+<!---->
+
+<!--개인게시판으로-->
+        <a href="#" th:href="@{/board/{boardId} (boardId=${userBoardId})}" role="button">개인 게시판</a>
+        <!--url에 boardId안들어내고???-->
+<!---->
+
+<!--구독 카테고리-->
+<!---->
+
+<!--구독 게시판-->
+<!---->
+</body>
+</html>
